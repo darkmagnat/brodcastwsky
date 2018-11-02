@@ -20,7 +20,7 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
-const prefix = "+";
+const prefix = ".";
 /////////////////////////
 ////////////////////////
 
@@ -28,7 +28,7 @@ client.on('message', async message => { // Alpha Codes Server.
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
  
-    var prefix = '+'; //<==== تقدر تغير البرفكس
+    var prefix = '.'; //<==== تقدر تغير البرفكس
     var args = message.content.toLowerCase().split(" "); // Alpha Codes Server.
     var command = args[0];
  
@@ -87,16 +87,16 @@ client.on('message', async message => { // Alpha Codes Server.
                         message.channel.send(`:timer: | Wait some time to send the message to **${admin.size}** Admins ...`).then(msg => {
                             admin.forEach(async a => { // Alpha Codes Server.
                                 let bcMessage = new Discord.RichEmbed()
-                                .setTitle(`:loudspeaker: ${a.user.username}`)
+                                .setTitle('**:loudspeaker: ${a.user.username}**')
                                 .setColor('GREEN')
                                 .addField(':pencil: **Sender:**', message.author.username, true)
                                 .addField(':globe_with_meridians: **Server:**', message.guild.name, true)
-                                .addField(':scroll: **Message:**', argsM.replace('[user]', a))
+                                .addField(':scroll: **Message:**', argsM.replace([user], a))
                                 .setTimestamp()
                                 .setFooter(message.author.tag, message.author.avatarURL)
                                
                                 a.send(bcMessage)
-                                await msg.edit(`:white_check_mark: | <@${message.author.id}> Successfully send the message to **${admin.size}** Admins!`);
+                                await msg.edit(`:white_check_mark' <@${message.author.id}> Successfully send the message to **${admin.size}** Admins!`);
                             })
                         })
                     })
@@ -138,7 +138,7 @@ client.on('message', async message => { // Alpha Codes Server.
                         message.channel.send(`:timer: | Wait some time to send the message to **${member.size}** Members ...`).then(msg => {
                             member.forEach(async m => {
                                 let bcMessage = new Discord.RichEmbed()
-                                .setTitle(`:loudspeaker: ${m.user.username}`)
+                                .setTitle(':loudspeaker: ${m.user.username}')
                                 .setColor('GREEN')
                                 .addField(':pencil: **Sender:**', message.author.username, true)
                                 .addField(':globe_with_meridians: **Server:**', message.guild.name, true)
@@ -153,7 +153,7 @@ client.on('message', async message => { // Alpha Codes Server.
                     })
                     dontSend.on('collect', r => {
                         msgB.delete();
-                        message.channel.send(':negative_squared_cross_mark: | The command has been canceld.').then(msg => msg.delete(5000));
+                        message.channel.send(`:negative_squared_cross_mark: | The command has been canceld.').then(msg => msg.delete(5000));
                     })
                 }) // Alpha Codes Server.
             }
@@ -190,7 +190,7 @@ client.on('message', async message => { // Alpha Codes Server.
                     message.channel.send(`:timer: | Wait some time to send the message to **${membersRole.size}** Members ...`).then(msg => {
                         membersRole.forEach(async mR => {
                             let bcMessage = new Discord.RichEmbed()
-                            .setTitle(`:loudspeaker: ${mR.user.username}`)
+                            .setTitle(:loudspeaker: ${mR.user.username})
                             .setColor('GREEN')
                             .addField(':pencil: **Sender:**', message.author.username, true)
                             .addField(':globe_with_meridians: **Server:**', message.guild.name, true)
@@ -225,14 +225,14 @@ client.on('message', async message => { // Alpha Codes Server.
                 let sendR = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
                 let dontSendR = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
                 let send = msgB.createReactionCollector(sendR);
-                let dontSend = msgB.createReactionCollector(dontSendR); // Alpha Codes Server.
+                let dontSend = msgB.createReactionCollector(dontSendR); 
                
                 send.on('collect', r => {
                     msgB.delete();
                     message.channel.send(`:timer: | Wait some time to send the message to **${allB.size}** Members ...`).then(msg => {
                         allB.forEach(async m => {
                             let bcMessage = new Discord.RichEmbed()
-                            .setTitle(`:loudspeaker: ${m.user.username}`) // Alpha Codes Server.
+                            .setTitle(':loudspeaker: ${m.user.username}') 
                             .setColor('GREEN')
                             .addField(':pencil: **Sender:**', message.author.username, true)
                             .addField(':globe_with_meridians: **Server:**', message.guild.name, true)
